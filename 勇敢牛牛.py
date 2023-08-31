@@ -37,3 +37,21 @@ def main():
     
 if __name__ == "__main__":
     main()
+
+# 將程式碼嵌入 HTML 檔案
+def render_html():
+    html = """
+    <html>
+        <head>
+            <title>乘法測驗</title>
+        </head>
+        <body>
+            <script>
+                {{python}}
+            </script>
+        </body>
+    </html>
+    """
+    return html.replace("{{python}}", main())
+
+render_html()
