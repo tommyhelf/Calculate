@@ -1,84 +1,13 @@
 <!DOCTYPE html>
-<html lang="zh-TW">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>乘法測驗</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <title>My PyScript Demo</title>
+    <link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" />
+    <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
 </head>
 <body>
-    <div id="container"></div>
-
-    <script>
-        $(document).ready(function() {
-            // 隨機挑選出兩個不為零的個位數字 A 和 B
-            function getRandomNumbers() {
-                return [randomInteger(1, 9), randomInteger(1, 9)];
-            }
-
-            // 計算使用者完成5次計算所需的時間T
-            function calculateTime() {
-                var start_time = Date.now();
-                for (var i = 0; i < 5; i++) {
-                    getRandomNumbers();
-                }
-                var end_time = Date.now();
-                return end_time - start_time;
-            }
-
-            // 顯示評價
-            function getEvaluation(time) {
-                if (time < 10) {
-                    return "天才";
-                } else if (time < 15) {
-                    return "不錯";
-                } else {
-                    return "還可以";
-                }
-            }
-
-            // 顯示乘法測驗
-            function displayMultiplicationTest() {
-                var numbers = getRandomNumbers();
-                var prompt = `請輸入 ${numbers[0]} x ${numbers[1]} 的乘積：`;
-                $(`#container`).append(`
-                    <p>${prompt}</p>
-                    <input type="text" id="answer">
-                    <button type="button" id="submit">送出</button>
-                `);
-
-                // 按下送出按鈕時，計算使用者答案
-                $(`#submit`).click(function() {
-                    var answer = $(`#answer`).val();
-                    if (answer.isNumeric() && answer == numbers[0] * numbers[1]) {
-                        $(`#container`).append(`
-                            <p>答案正確！</p>
-                        `);
-                    } else {
-                        $(`#container`).append(`
-                            <p>答案錯誤！</p>
-                        `);
-                    }
-                });
-            }
-
-            // 顯示結果
-            function displayResult() {
-                var time = calculateTime();
-                var evaluation = getEvaluation(time);
-                $(`#container`).append(`
-                    <p>T = ${time} 秒</p>
-                    <p>評價：${evaluation}</p>
-                `);
-            }
-
-            // 初始化
-            displayMultiplicationTest();
-            displayResult();
-        });
-
-        function randomInteger(min, max) {
-            return Math.floor(Math.random() * (max - min + 1)) + min;
-        }
-    </script>
+    <py-script src="c:/Users/sogah/OneDrive/桌面/py4e/BraveCow.py"></py-script>
 </body>
 </html>
+
